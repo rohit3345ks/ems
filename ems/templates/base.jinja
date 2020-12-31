@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Home Page</title>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">EMS</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/empdata/new">Add Employee</a></li>
+                <li><a href="/empdata">View Employees</a></li>
+            </ul>
+             {% if user.is_authenticated %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ user.username }}</a></li>
+                    <li><a href="/auth/logout"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+                </ul>
+             {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/auth/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="/auth/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+             {% endif %}
+            
+        </div>
+    </nav>
+    {% block content %}
+        {% for message in messages %}
+			<h3>{{ message }}</h3>
+		{% endfor %}
+    {% endblock %}
+</body>
+</html>

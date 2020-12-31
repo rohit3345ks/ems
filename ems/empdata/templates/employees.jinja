@@ -1,0 +1,25 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Employee ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">City</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for emp in emps %}
+    <tr>
+      <th scope="row">{{ emp.employeeID }}</th>
+      <td>{{ emp.firstName }}</td>
+      <td>{{ emp.lastName }}</td>
+      <td>{{ emp.city}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
